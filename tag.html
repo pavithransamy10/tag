@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Web NFC App</title>
+</head>
+<body>
+    <h1>Web NFC App</h1>
+    <p id="message">Waiting for NFC tag...</p>
+    <script>
+        const messageElement = document.getElementById("message");
+        const nfc = new NDEFReader();
+        nfc.scan().then(({ message }) => {
+            messageElement.textContent = "The food is fresh";
+        }).catch(error => {
+            messageElement.textContent = "Error: " + error;
+        });
+    </script>
+</body>
+</html>
